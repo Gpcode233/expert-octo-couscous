@@ -1,0 +1,69 @@
+<!--
+After successful registration, the user should be redirected to the signin modal and then to the landing page.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Auth Project</title>
+  <link rel="stylesheet" href="6auth.css">
+</head>
+<body>
+
+  <!-- Loader Section -->
+  <div id="loader" class="loader-container">
+    <div class="loader"></div>
+    <span>Loading...</span>
+  </div>
+
+  <!-- Get Started Section -->
+  <div id="startBox" class="container active large-section">
+    <h2 class="welcome-heading">👋 Welcome</h2>
+    <button id="getStartedBtn" class="get-started-btn">Get Started</button>
+  </div>
+
+  <!-- Sign Up Section -->
+  <form id="signupForm" class="container large-section">
+    <h2 class="form-title">Register</h2>
+    <input type="text" id="name" placeholder="Name" required class="form-input" />
+    <input type="email" id="email" placeholder="Email" required class="form-input" />
+    <input type="text" id="regno" placeholder="Reg No" required class="form-input" />
+
+    <div style="position: relative;">
+      <input type="password" id="password" placeholder="Password" required class="form-input" style="padding-right:2.5rem;" />
+      <span onclick="togglePassword('password', this)" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; color:#888; font-size:1.2rem;">
+        <svg id="eye-password" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+    </div>
+
+    <div style="position: relative;">
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required class="form-input" style="padding-right:2.5rem;" />
+      <span onclick="togglePassword('confirmPassword', this)" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; color:#888; font-size:1.2rem;">
+        <svg id="eye-confirmPassword" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+    </div>
+    <div class="error signup-error" id="signupError"></div>
+    <button type="submit" class="form-btn">Sign Up</button>
+    <a href="#" onclick="signupForm.classList.remove('active'); loginForm.classList.add('active'); return false;" class="switch-link">Already have an account? Login!!</a>
+  </form>
+
+  <!-- Login Section -->
+  <form id="loginForm" class="container large-section">
+    <h2 class="form-title">Login</h2>
+    <input type="text" id="loginRegNo" placeholder="Reg No" required class="form-input" />
+    <input type="password" id="loginPassword" placeholder="Password" required class="form-input" />
+    <a href="#" onclick="forgotPassword()" class="forgot-link">Forgot password?</a>
+    <div class="error login-error" id="loginError"></div>
+    <button type="submit" class="form-btn">Login</button>
+  </form>
+
+  <!-- Landing Page -->
+  <div class="landing large-section" id="landingPage">
+    <h1 class="landing-title">🎉 Welcome, <span id="userName">User</span>!</h1>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+
+</body>
+</html>
